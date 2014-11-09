@@ -5,9 +5,10 @@ block content
   p Welcome to #{title}
 
   form
-    input(ng-model="newTodo")(placeholder="Write a todo")
+    input(ng-model="newTodo", placeholder="Write a todo")
     button(ng-click="addTodo()") add
 
   ul
     li(ng-repeat="todo in todos")
-      span {{ todo.content }}
+      p {{ todo.content + '  ' + todo.completed }}
+      button(ng-click="removeTodo(todo)") remove
