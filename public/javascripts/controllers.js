@@ -5,4 +5,14 @@ todoApp.controller('TodoListCtrl', function($scope) {
     {'content': 'first todo'},
     {'content': 'second todo'}
   ];
+
+  $scope.addTodo = function() {
+    var newTodo = {
+      'content': $scope.newTodo.trim()
+    }
+
+   $scope.todos.push(newTodo);
+
+  };
+
 });
