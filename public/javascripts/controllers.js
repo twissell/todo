@@ -27,5 +27,4 @@ todoApp.controller('TodoListCtrl', function($scope) {
     $scope.todos.splice(todoIndex, 1);
   };
 
-
 });
