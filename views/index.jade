@@ -9,7 +9,7 @@ block content
     button(ng-click="addTodo()") add
 
   ul
-    li(ng-repeat="todo in todos")
+    li(ng-repeat="todo in todos | filter:{completed:false}")
       p(ng-hide="editing", ng-click="editing = true") {{ todo.content }}
       p(ng-hide="editing") is completed: {{ todo.completed }}
       input(type="checkbox", ng-model="todo.completed")

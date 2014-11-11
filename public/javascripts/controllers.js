@@ -9,6 +9,10 @@ todoApp.controller('TodoListCtrl', function($scope) {
     },
     {
       'content': 'second todo',
+      'completed': true
+    },
+    {
+      'content': 'third todo',
       'completed': false
     }
   ];
