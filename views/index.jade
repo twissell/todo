@@ -11,6 +11,7 @@ block content
   ul
     li(ng-repeat="todo in todos")
       p(ng-hide="editing", ng-click="editing = true") {{ todo.content }}
+      p(ng-hide="editing") is completed: {{ todo.completed }}
       form(ng-show="editing", ng-submit="editing = false")
         input(type="text", ng-model="todo.content", placeholder="todo.content")
         button(type="submit") save
