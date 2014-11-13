@@ -1,7 +1,44 @@
 var todoApp = angular.module('TodoApp', []);
 
+todoApp.filter('state', function() {
+
+  return function(items, stateOption){
+
+    console.log(stateOption)
+
+    // returns all items
+    if(stateOption == "all") {
+      return items;
+    }
+
+    filtered = [];
+    for (var i = 0; i < items.length; i++) {
+      
+      // just all active items
+      if(stateOption == "active") {
+        if(items[i].completed == false) {
+          filtered.push(items[i]);
+        }
+      }
+      else {
+        // just all completed items
+        if(items[i].completed == true) {
+          filtered.push(items[i]);
+        }
+      }
+
+    }
+    return filtered;
+  };
+
+});
+
 todoApp.controller('TodoListCtrl', function($scope) {
-  
+ 
+  $scope.filters = {};
+
+  $scope.stateOptions = ['all', 'active', 'completed'];
+
   $scope.todos = [
     {
       'content': 'first todo',
@@ -32,3 +69,4 @@ todoApp.controller('TodoListCtrl', function($scope) {
   };
 
 });
+

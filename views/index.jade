@@ -8,11 +8,17 @@ block content
     input(ng-model="newTodo", placeholder="Write a todo")
     button(ng-click="addTodo()") add
 
+    // for ng-init see: http://stackoverflow.com/questions/18194255/how-to-have-a-default-option-in-select-box-angular-js
+    select(ng-model="stateOption", ng-init="stateOption = stateOption || stateOptions[0]", ng-options="stateOption for stateOption in stateOptions")
+
   ul
-    li(ng-repeat="todo in todos | filter:{completed:false}")
-      p(ng-hide="editing", ng-click="editing = true") {{ todo.content }}
-      p(ng-hide="editing") is completed: {{ todo.completed }}
-      input(type="checkbox", ng-model="todo.completed")
+    li(ng-repeat="todo in todos | state:stateOption")
+      div(ng-hide="editing")
+        p(ng-click="editing = true") 
+          {{ todo.content }}
+        p 
+          is completed: {{ todo.completed }}
+        input(type="checkbox", ng-model="todo.completed")
 
       form(ng-show="editing", ng-submit="editing = false")
         input(type="text", ng-model="todo.content", placeholder="todo.content")
