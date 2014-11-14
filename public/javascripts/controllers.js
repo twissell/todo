@@ -31,15 +31,28 @@ todoApp.filter('state', function() {
 
 todoApp.filter('total', function() {
   return function(todos, state) {
-    count = 0;
-    for(var i = 0; i < todos.length; i++) {
-      if(todos[i].completed == false) {
-        count += 1;
-      } 
+    
+    if(state == 'active') { 
+      count = 0;
+      for(var i = 0; i < todos.length; i++) {
+        if(todos[i].completed == false) {
+          count += 1;
+        } 
+      }
+      return count;
     }
-    return count;
-  }
 
+    if(state == 'completed') {
+      count = 0;
+      for(var i = 0; i < todos.length; i++) {
+        if(todos[i].completed == true) {
+          count += 1;
+        }
+      }
+      return count;
+    }
+
+  }
 });
 
 todoApp.controller('TodoListCtrl', function($scope) {
