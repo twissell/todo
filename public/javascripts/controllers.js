@@ -31,7 +31,7 @@ todoApp.filter('state', function() {
 
 todoApp.filter('total', function() {
   return function(todos, state) {
-    
+    // count for active todos 
     if(state == 'active') { 
       count = 0;
       for(var i = 0; i < todos.length; i++) {
@@ -41,7 +41,7 @@ todoApp.filter('total', function() {
       }
       return count;
     }
-
+    // count for completed todos
     if(state == 'completed') {
       count = 0;
       for(var i = 0; i < todos.length; i++) {
@@ -51,13 +51,10 @@ todoApp.filter('total', function() {
       }
       return count;
     }
-
   }
 });
 
 todoApp.controller('TodoListCtrl', function($scope) {
- 
-  //$scope.filters = {};
 
   $scope.stateOptions = ['all', 'active', 'completed'];
 
@@ -81,13 +78,22 @@ todoApp.controller('TodoListCtrl', function($scope) {
       'content': $scope.newTodo.trim(),
       'completed': false
     }
-
    $scope.todos.push(newTodo);
   };
 
   $scope.removeTodo = function(todo) {
     var todoIndex = $scope.todos.indexOf(todo);
     $scope.todos.splice(todoIndex, 1);
+  };
+
+  $scope.removeCompleted = function() {
+    filtered = []; 
+    for(var i = 0; i < $scope.todos.length; i++) {
+      if($scope.todos[i].completed != true) {
+        filtered.push($scope.todos[i])
+      }
+    }
+    $scope.todos = filtered;
   };
 
 });
