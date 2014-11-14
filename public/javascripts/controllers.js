@@ -1,11 +1,7 @@
 var todoApp = angular.module('TodoApp', []);
 
 todoApp.filter('state', function() {
-
   return function(items, stateOption){
-
-    console.log(stateOption)
-
     // returns all items
     if(stateOption == "all") {
       return items;
@@ -33,9 +29,22 @@ todoApp.filter('state', function() {
 
 });
 
+todoApp.filter('total', function() {
+  return function(todos, state) {
+    count = 0;
+    for(var i = 0; i < todos.length; i++) {
+      if(todos[i].completed == false) {
+        count += 1;
+      } 
+    }
+    return count;
+  }
+
+});
+
 todoApp.controller('TodoListCtrl', function($scope) {
  
-  $scope.filters = {};
+  //$scope.filters = {};
 
   $scope.stateOptions = ['all', 'active', 'completed'];
 
