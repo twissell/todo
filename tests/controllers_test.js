@@ -39,4 +39,11 @@ describe('TodoListCtrl', function(){
 
   });
 
+  it('should remove all completed todos', function(){
+  
+    scope.removeCompleted();
+    expect(scope.todos.length).toBe(2);
+
+  });
+
 }); 
