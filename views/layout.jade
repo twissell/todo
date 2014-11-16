@@ -1,10 +1,11 @@
 doctype html
-html(ng-app="TodoApp")
+html(ng-app="todoApp")
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
-    link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css')
     script(src='/bower_components/angular/angular.js')
+    script(src='/javascripts/app.js')
     script(src='/javascripts/controllers.js')
+    script(src='/javascripts/filters.js')
   body(ng-controller="TodoListCtrl")
     block content

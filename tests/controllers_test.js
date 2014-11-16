@@ -2,10 +2,10 @@ describe('TodoListCtrl', function(){
 
   var scope, ctrl;
   
-  beforeEach(module('TodoApp'));
+  beforeEach(module('todoApp'));
   
   beforeEach(inject(function($rootScope, $controller){ 
-    
+     
     scope = $rootScope.$new();
     ctrl = $controller('TodoListCtrl', {$scope:scope});
 
