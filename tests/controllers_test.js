@@ -26,4 +26,17 @@ describe('TodoListCtrl', function(){
 
   });
 
+  it('should remove a todo from todos', function(){
+  
+    scope.removeTodo(scope.todos[0]);
+    expect(scope.todos.length).toBe(2);
+
+    scope.removeTodo(scope.todos[0]);
+    expect(scope.todos.length).toBe(1);
+    
+    scope.removeTodo(scope.todos[0]);
+    expect(scope.todos.length).toBe(0);
+
+  });
+
 }); 
