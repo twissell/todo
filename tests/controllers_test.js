@@ -17,4 +17,13 @@ describe('TodoListCtrl', function(){
   
   });
 
+  it('should add a new todo to todos', function(){
+  
+    scope.newTodo = 'new todo';
+    scope.addTodo();
+
+    expect(scope.todos.length).toBe(4);
+
+  });
+
 }); 
