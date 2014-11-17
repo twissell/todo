@@ -31,25 +31,25 @@ todoAppFilters.filter('state', function() {
 
 todoAppFilters.filter('total', function() {
   return function(todos, state) {
-    // count for active todos 
-    if(state == 'active') { 
-      count = 0;
-      for(var i = 0; i < todos.length; i++) {
-        if(todos[i].completed == false) {
-          count += 1;
-        } 
-      }
-      return count;
-    }
-    // count for completed todos
-    if(state == 'completed') {
-      count = 0;
-      for(var i = 0; i < todos.length; i++) {
-        if(todos[i].completed == true) {
+    
+    var count = 0;
+    for(var i = 0; i < todos.length; i++) {
+      
+      var todo = todos[i];
+      
+      if(state == 'active'){
+        if(todo.completed == false){
           count += 1;
         }
       }
-      return count;
+      else if(state == 'completed'){
+        if(todo.completed == true){
+          count += 1;
+        }
+      }
+
     }
+    
+    return count;
   }
 });
