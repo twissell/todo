@@ -20,7 +20,8 @@ module.exports = function(config) {
       , './public/javascripts/app.js'
       , './public/javascripts/controllers.js'
       , './public/javascripts/filters.js'
-      , './tests/*'
+      , './tests/controllers_test.js'
+      , './tests/filters_test.js'
     ],
 
 

@@ -9,17 +9,17 @@ todoAppFilters.filter('state', function() {
 
     filtered = [];
     for (var i = 0; i < items.length; i++) {
-      
+      var item = items[i];  
       // just all active items
       if(stateOption == "active") {
-        if(items[i].completed == false) {
-          filtered.push(items[i]);
+        if(item.completed == false) {
+          filtered.push(item);
         }
       }
       else {
         // just all completed items
-        if(items[i].completed == true) {
-          filtered.push(items[i]);
+        if(item.completed == true) {
+          filtered.push(item);
         }
       }
 
