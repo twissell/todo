@@ -3,7 +3,7 @@ var todoAppControllers = angular.module('todoAppControllers', []);
 todoAppControllers.controller('TodoListCtrl', function($scope) {
 
   $scope.stateOptions = ['all', 'active', 'completed'];
-
+  
   $scope.todos = [
     {
       'content': 'first todo',
@@ -18,13 +18,12 @@ todoAppControllers.controller('TodoListCtrl', function($scope) {
       'completed': false
     }
   ];
-
+   
   $scope.addTodo = function() {
-    var newTodo = {
+    $scope.todos.push({
       'content': $scope.newTodo.trim(),
       'completed': false
-    }
-   $scope.todos.push(newTodo);
+    }); 
   };
 
   $scope.removeTodo = function(todo) {

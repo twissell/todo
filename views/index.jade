@@ -7,7 +7,7 @@ block content
   form
     input(ng-model="newTodo", placeholder="Write a todo")
     button(ng-click="addTodo()") add
-
+  
     // for ng-init see: http://stackoverflow.com/questions/18194255/how-to-have-a-default-option-in-select-box-angular-js
     select(ng-model="stateOption", ng-init="stateOption = stateOption || stateOptions[0]", ng-options="stateOption for stateOption in stateOptions")
     

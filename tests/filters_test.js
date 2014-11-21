@@ -1,7 +1,5 @@
 describe('todoAppFilters', function(){
 
-  // http://stackoverflow.com/questions/21094569/how-to-unit-test-a-filter-in-angularjs
-
   var filter;
 
   var todos = [
