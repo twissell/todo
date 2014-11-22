@@ -1,12 +1,13 @@
 var todoAppFilters = angular.module('todoAppFilters', []);
 
 todoAppFilters.filter('state', function() {
-  return function(items, stateOption){
+  return function(items, stateOption){ 
+
+    console.log(items);
     // returns all items
     if(stateOption == "all") {
       return items;
     }
-
     filtered = [];
     for (var i = 0; i < items.length; i++) {
       var item = items[i];  

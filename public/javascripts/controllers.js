@@ -3,32 +3,25 @@ var todoAppControllers = angular.module('todoAppControllers', []);
 todoAppControllers.controller('TodoListCtrl', function($scope) {
 
   $scope.stateOptions = ['all', 'active', 'completed'];
-  
-  $scope.todos = [
-    {
-      'content': 'first todo',
-      'completed': false
-    },
-    {
-      'content': 'second todo',
-      'completed': true
-    },
-    {
-      'content': 'third todo',
-      'completed': false
-    }
-  ];
-   
+
+  //localStorage.removeItem('todos');
+  $scope.todos = JSON.parse(localStorage.getItem('todos') || '[]');
+
   $scope.addTodo = function() {
     $scope.todos.push({
       'content': $scope.newTodo.trim(),
       'completed': false
-    }); 
+      }
+    ); 
+
+    localStorage.setItem('todos', JSON.stringify($scope.todos));
   };
 
   $scope.removeTodo = function(todo) {
     var todoIndex = $scope.todos.indexOf(todo);
     $scope.todos.splice(todoIndex, 1);
+   
+    localStorage.setItem('todos', JSON.stringify($scope.todos));
   };
 
   $scope.removeCompleted = function() {
@@ -39,6 +32,8 @@ todoAppControllers.controller('TodoListCtrl', function($scope) {
       }
     }
     $scope.todos = filtered;
+   
+    localStorage.setItem('todos', JSON.stringify($scope.todos));
   };
 
 });

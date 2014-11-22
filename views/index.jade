@@ -12,7 +12,7 @@ block content
     select(ng-model="stateOption", ng-init="stateOption = stateOption || stateOptions[0]", ng-options="stateOption for stateOption in stateOptions")
     
   ul
-    li(ng-repeat="todo in todos | state:stateOption")
+    li(ng-repeat="todo in todos | state:stateOption track by $index")
       div(ng-hide="editing")
         p(ng-click="editing = true") 
           {{ todo.content }}
