@@ -36,5 +36,9 @@ todoAppControllers.controller('TodoListCtrl', function($scope) {
     localStorage.setItem('todos', JSON.stringify($scope.todos));
   };
 
+  $scope.todoCompleted = function(todo) {
+    localStorage.setItem('todos', JSON.stringify($scope.todos));
+  }
+
 });
 
