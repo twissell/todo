@@ -9,7 +9,10 @@ block content
     button(ng-click="addTodo()") add
   
     // for ng-init see: http://stackoverflow.com/questions/18194255/how-to-have-a-default-option-in-select-box-angular-js
-    select(ng-model="stateOption", ng-init="stateOption = stateOption || stateOptions[0]", ng-options="stateOption for stateOption in stateOptions")
+    select(ng-model="stateOption", 
+           ng-init="stateOption", 
+           ng-options="stateOption for stateOption in stateOptions",
+           ng-change="stateOptionChange(stateOption)")
     
   ul
     li(ng-repeat="todo in todos | state:stateOption track by $index")

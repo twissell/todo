@@ -5,7 +5,13 @@ todoAppControllers.controller('TodoListCtrl', function($scope) {
   $scope.stateOptions = ['all', 'active', 'completed'];
 
   //localStorage.removeItem('todos');
+  //localStorage.removeItem('stateOption');
   $scope.todos = JSON.parse(localStorage.getItem('todos') || '[]');
+  $scope.stateOption = localStorage.getItem('stateOption') || 'all';
+
+  $scope.stateOptionChange = function(stateOption) {
+    localStorage.setItem('stateOption', stateOption);
+  }
 
   $scope.addTodo = function() {
     $scope.todos.push({
