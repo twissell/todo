@@ -1,12 +1,12 @@
 var todoAppControllers = angular.module('todoAppControllers', []);
 
-todoAppControllers.controller('TodoListCtrl', function($scope) {
+todoAppControllers.controller('TodoListCtrl', function($scope, todoStorage) {
 
   $scope.stateOptions = ['all', 'active', 'completed'];
 
   //localStorage.removeItem('todos');
   //localStorage.removeItem('stateOption');
-  $scope.todos = JSON.parse(localStorage.getItem('todos') || '[]');
+  $scope.todos = todoStorage.get();
   $scope.stateOption = localStorage.getItem('stateOption') || 'all';
 
   $scope.stateOptionChange = function(stateOption) {
@@ -20,14 +20,14 @@ todoAppControllers.controller('TodoListCtrl', function($scope) {
       }
     ); 
 
-    localStorage.setItem('todos', JSON.stringify($scope.todos));
+    todoStorage.put($scope.todos);
   };
 
   $scope.removeTodo = function(todo) {
     var todoIndex = $scope.todos.indexOf(todo);
     $scope.todos.splice(todoIndex, 1);
    
-    localStorage.setItem('todos', JSON.stringify($scope.todos));
+    todoStorage.put($scope.todos);
   };
 
   $scope.removeCompleted = function() {
@@ -39,11 +39,11 @@ todoAppControllers.controller('TodoListCtrl', function($scope) {
     }
     $scope.todos = filtered;
    
-    localStorage.setItem('todos', JSON.stringify($scope.todos));
+    todoStorage.put($scope.todos);
   };
 
   $scope.todoCompleted = function(todo) {
-    localStorage.setItem('todos', JSON.stringify($scope.todos));
+    todoStorage.put($scope.todos);
   }
 
 });
