@@ -31,3 +31,4 @@ block content
   p active items: {{ todos | total:"active" }}
   p completed items: {{ todos | total:"completed" }}
   button(ng-click="removeCompleted()") remove completed
+  button(ng-click="removeAll()") remove all

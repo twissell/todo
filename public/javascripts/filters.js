@@ -2,8 +2,8 @@ var todoAppFilters = angular.module('todoAppFilters', []);
 
 todoAppFilters.filter('state', function() {
   return function(items, stateOption){ 
-
-    console.log(items);
+    //console.log(typeof items);
+    
     // returns all items
     if(stateOption == "all") {
       return items;
@@ -32,7 +32,7 @@ todoAppFilters.filter('state', function() {
 
 todoAppFilters.filter('total', function() {
   return function(todos, state) {
-    
+   
     var count = 0;
     for(var i = 0; i < todos.length; i++) {
       

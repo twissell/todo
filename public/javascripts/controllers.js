@@ -7,6 +7,7 @@ todoAppControllers.controller('TodoListCtrl', function($scope, todoStorage) {
   //localStorage.removeItem('todos');
   //localStorage.removeItem('stateOption');
   $scope.todos = todoStorage.get();
+  console.log($scope.todos);
   $scope.stateOption = localStorage.getItem('stateOption') || 'all';
 
   $scope.stateOptionChange = function(stateOption) {
@@ -41,6 +42,11 @@ todoAppControllers.controller('TodoListCtrl', function($scope, todoStorage) {
    
     todoStorage.put($scope.todos);
   };
+
+  $scope.removeAll = function() {
+    $scope.todos = [];
+    todoStorage.put($scope.todos);
+  }
 
   $scope.todoCompleted = function(todo) {
     todoStorage.put($scope.todos);
