@@ -1,18 +1,17 @@
 var todoAppFilters = angular.module('todoAppFilters', []);
 
 todoAppFilters.filter('state', function() {
-  return function(items, stateOption){ 
-    //console.log(typeof items);
+  return function(items, state){ 
     
     // returns all items
-    if(stateOption == "all") {
+    if(state == "all") {
       return items;
     }
     filtered = [];
     for (var i = 0; i < items.length; i++) {
       var item = items[i];  
       // just all active items
-      if(stateOption == "active") {
+      if(state == "active") {
         if(item.completed == false) {
           filtered.push(item);
         }
