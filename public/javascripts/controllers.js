@@ -1,14 +1,13 @@
 var todoAppControllers = angular.module('todoAppControllers', []);
 
-todoAppControllers.controller('TodoListCtrl', function($scope, todoStorage) {
+todoAppControllers.controller('TodoListCtrl', function($scope, todoStorage, stateStorage) {
 
   $scope.states = ['all', 'active', 'completed'];
 
   //localStorage.removeItem('todos');
   //localStorage.removeItem('stateOption');
   $scope.todos = todoStorage.get();
-  
-  $scope.state = localStorage.getItem('state') || 'all';
+  $scope.state = stateStorage.get(); 
 
   $scope.stateChange = function(state) {
     localStorage.setItem('state', state);

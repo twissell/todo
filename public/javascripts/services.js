@@ -9,3 +9,12 @@ todoApp.factory('todoStorage', function() {
     }
   }
 });
+
+todoApp.factory('stateStorage', function() {
+  return {
+    get: function() {
+      return localStorage.getItem('state') || 'all';
+    }
+  }
+
+})
