@@ -17,4 +17,4 @@ todoApp.factory('stateStorage', function() {
     }
   }
 
-})
+});

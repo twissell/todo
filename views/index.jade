@@ -26,6 +26,13 @@ block content
       form(ng-show="editing", ng-submit="editing = false")
         input(type="text", ng-model="todo.content", placeholder="todo.content")
         button(type="submit") save
+
+      form
+        label(ng-repeat="priority in priorities")
+          input(type="radio", value="{{ priority }}", ng-model="todo.priority", ng-change="priorityChange(todo)") 
+          | {{ priority }}
+        
+
       button(ng-click="removeTodo(todo)") remove
 
   p active items: {{ todos | total:"active" }}

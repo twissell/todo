@@ -1,22 +1,32 @@
 var todoAppControllers = angular.module('todoAppControllers', []);
 
-todoAppControllers.controller('TodoListCtrl', function($scope, todoStorage, stateStorage) {
+todoAppControllers.controller('TodoListCtrl', 
+    function($scope, todoStorage, todoStorage, stateStorage) {
 
   $scope.states = ['all', 'active', 'completed'];
-
+  $scope.priorities = ['high', 'medium', 'low'];
   //localStorage.removeItem('todos');
   //localStorage.removeItem('stateOption');
   $scope.todos = todoStorage.get();
   $scope.state = stateStorage.get(); 
 
+  // state
   $scope.stateChange = function(state) {
     localStorage.setItem('state', state);
   }
 
+  // priority
+  $scope.priorityChange = function(todo) {  
+    $scope.todos[$scope.todos.indexOf(todo)] = todo;
+    todoStorage.put($scope.todos);
+  }
+
+  // todos
   $scope.addTodo = function() {
     $scope.todos.push({
       'content': $scope.newTodo.trim(),
-      'completed': false
+      'completed': false,
+      'priority': 'medium'
       }
     ); 
 
