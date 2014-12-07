@@ -9,7 +9,6 @@ todoAppControllers.controller('TodoListCtrl',
   //localStorage.removeItem('stateOption');
   $scope.todos = todoStorage.get();
   $scope.state = stateStorage.get(); 
-
   // state
   $scope.stateChange = function(state) {
     localStorage.setItem('state', state);
